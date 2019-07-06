@@ -13,9 +13,9 @@ def compare(val1, val2):
         output = val1
     elif val1 == "S" and val2 == "R":
         output = val2
-    elif val1 == "P" and val2 == "S":
-        output = val1
     elif val1 == "S" and val2 == "P":
+        output = val1
+    elif val1 == "P" and val2 == "S":
         output = val2
     elif val1 == "P" and val2 == "R":
         output = val1
@@ -28,10 +28,26 @@ def compare(val1, val2):
 
     return output
 
+
+def rename_choice(choice):
+    response = ""
+    if choice == "R":
+        response = "Rock"
+    elif choice == "S":
+        response = "Scissors"
+    elif choice == "P":
+        response = "Paper"
+    else:
+        response = ""
+
+    return response
+
+print("===============================================================================")
 print("Welcome to RPS - The terminal adoptation of the classic Rock, Paper, Scissors game")
 print("Here are the Rules:\n R = Rock, P = Paper and S = Scissors.........in case you didn't know ;) ")
 print("Rock beats Scissors, Scissors beat Paper and Paper beats Rock\neither than that it's a draw")
 print("Got it????\nLet's play then")
+print("================================================================================")
 
 playing = True
 while playing:
@@ -45,11 +61,11 @@ while playing:
 
         if result == user_choice:
             score_counter["user"] += 1
-            print(f"You WIIINNNN!!! {user_choice} absolutely destroys {computer_choice}")
+            print(f"+++++You WIIINNNN!!! {rename_choice(user_choice)} absolutely destroys {rename_choice(computer_choice)}+++++")
             game_won = True
         elif result == computer_choice:
             score_counter["computer"] += 1
-            print(f"Computer wins!! {computer_choice} certainly destroys {user_choice}")
+            print(f"*****Computer wins!! {rename_choice(computer_choice)} certainly destroys {rename_choice(user_choice)}*****")
             game_won = True
         elif result == "False":
             print("Please insert a valid answer...if you're confused scroll up and take a look at the rules again...")
@@ -64,8 +80,10 @@ while playing:
         print("Restarting.....")
     elif replay == "N":
         print("Well then...goodbye\nOH...btw here is the score, if you were wondering:- ")
+        print("/////////////////////////////////////")
         print(score_counter)
+        print("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
         playing = False
     else:
-        print("Now look what you made me do....please give a valid answer")
+        print("Now look what you made me do....next time just give a valid answer")
         playing = False
